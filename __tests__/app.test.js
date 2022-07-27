@@ -3,7 +3,6 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 
-const { cats } = require('../data/cats');
 
 describe('cats routes', () => {
   beforeEach(() => {
@@ -12,27 +11,26 @@ describe('cats routes', () => {
 
   it('/cats should return a list of cats', async () => {
     const res = await request(app).get('/cats');
-    const expected = cats.map((cat) => {
-      return { id: cat.id, name: cat.name };
-    });
-    expect(res.body).toEqual(expected);
+    expect(res.body.length).toEqual(4);
   });
+});
 
-  it('/cats/:id should return cat detail', async () => {
-    const res = await request(app).get('/cats/1');
-    const felix = {
-      id: '1',
-      name: 'Felix',
-      type: 'Tuxedo',
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Felix_the_cat.svg/200px-Felix_the_cat.svg.png',
-      year: 1892,
-      lives: 3,
-      isSidekick: false,
-    };
-    expect(res.body).toEqual(felix);
-  });
+it('/cats/:id should return cat detail', async () => {
+  const res = await request(app).get('/cats/1');
+  const felix = {
+    id: '1',
+    name: 'Felix',
+    type: 'Tuxedo',
+    year: 1892,
+    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Felix_the_cat.svg/200px-Felix_the_cat.svg.png',
+    lives: 3,
+    isSideKick: false,
 
-  afterAll(() => {
-    pool.end();
-  });
+  };
+  expect(res.body).toEqual(felix);
+});
+
+
+afterAll(() => {
+  pool.end();
 });
