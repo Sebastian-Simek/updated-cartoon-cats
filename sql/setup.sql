@@ -10,13 +10,16 @@ CREATE table cats (
     url VARCHAR NOT NULL,
     year INT NOT NULL,
     lives INT NOT NULL,
-    isSideKick BOOLEAN NOT NULL,
+    isSideKick BOOLEAN 
 );
 
 INSERT INTO cats (name, type, year, url, lives, isSideKick) VALUES
-('Felix', 'Tuxedo', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Felix_the_cat.svg/200px-Felix_the_cat.svg.png', 1892, 3, false),
+('Felix', 'Tuxedo', 1892, 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Felix_the_cat.svg/200px-Felix_the_cat.svg.png', 3, true),
 
-('Garfield', 'Orange Tabby', 'https://static.wikia.nocookie.net/garfield/images/9/9f/GarfieldCharacter.jpg', 1978,  7, false),
+('Garfield', 'Orange Tabby', 1978, 'https://static.wikia.nocookie.net/garfield/images/9/9f/GarfieldCharacter.jpg', 7, false),
 
-('Garfield',  'Orange Tabby', 'https://static.wikia.nocookie.net/garfield/images/9/9f/GarfieldCharacter.jpg', 1978, 7, false),
+('Duchess', 'Angora', 1970, 'https://static.wikia.nocookie.net/disney/images/e/eb/Profile_-_Duchess.jpeg', 9, false),
+
+('Tigger', 'Tiger', 1928, 'https://www.pinclipart.com/picdir/big/150-1504133_tigger-tigger-cartoon-me-clipart-png-image-download.png', 8, false);
+
 
